@@ -1,6 +1,13 @@
+[workspace]
+members = ["base/sender_plugin","base/ws_plugin", "crate/discover_plugin"]
+
 [package]
 name = "discover"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+bevy = { version = "0.16.1", default-features = false }
+env_logger = "0.11.8"
+
+discover_plugin = { path = "crate/discover_plugin" }
