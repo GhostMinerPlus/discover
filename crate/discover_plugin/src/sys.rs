@@ -8,6 +8,10 @@ pub(super) fn start_server(pool: Res<AsyncPool>) {
 
         let listener = UdpSocket::bind(format!("0.0.0.0:{port}")).await.unwrap();
 
+        listener
+            .join_multicast_v4("239.0.0.1".parse().unwrap(), "0.0.0.0".parse().unwrap())
+            .unwrap();
+
         let mut buf = [0; 1024];
 
         while let Ok((_, addr)) = listener.recv_from(&mut buf).await {

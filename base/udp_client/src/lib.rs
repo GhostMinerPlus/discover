@@ -1,27 +1,28 @@
 use std::net::SocketAddr;
 
-use tokio::net::UdpSocket;
+use tokio::net::{ToSocketAddrs, UdpSocket};
 
 pub struct DiscoverClent {
     socket: UdpSocket,
-    port: u16,
 }
 
 impl DiscoverClent {
-    pub async fn new(port: u16) -> Self {
+    pub async fn new() -> Self {
         let socket = UdpSocket::bind("0.0.0.0:0")
             .await
             .expect("couldn't bind to address");
 
-        socket.set_broadcast(true).expect("couldn't set broadcast");
+        socket
+            .set_multicast_ttl_v4(1)
+            .expect("couldn't set broadcast");
 
-        Self { socket, port }
+        Self { socket }
     }
 
-    pub async fn find(self, cb: impl Fn(SocketAddr)) {
+    pub async fn find(self, multiaddr: impl ToSocketAddrs, cb: impl Fn(SocketAddr)) {
         let mut buf = [0; 1024];
         self.socket
-            .send_to("hello".as_bytes(), format!("255.255.255.255:{}", self.port))
+            .send_to("hello".as_bytes(), multiaddr)
             .await
             .expect("couldn't send data");
 
