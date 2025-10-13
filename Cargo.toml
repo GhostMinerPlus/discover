@@ -1,5 +1,5 @@
 [workspace]
-members = ["base/sender_plugin","base/ws_plugin", "crate/discover_plugin"]
+members = ["base/sender_plugin", "base/udp_client","base/ws_plugin", "crate/discover_plugin"]
 
 [package]
 name = "discover"
@@ -9,5 +9,10 @@ edition = "2024"
 [dependencies]
 bevy = { version = "0.16.1", default-features = false }
 env_logger = "0.11.8"
+tokio = { version = "1.47.1", features = ["full"] }
+log = "0.4.28"
 
 discover_plugin = { path = "crate/discover_plugin" }
+
+[dev-dependencies]
+udp_client = { path = "base/udp_client" }
