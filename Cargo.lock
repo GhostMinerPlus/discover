@@ -589,7 +589,7 @@ dependencies = [
 
 [[package]]
 name = "discover"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bevy",
  "discover_plugin",
@@ -601,7 +601,7 @@ dependencies = [
 
 [[package]]
 name = "discover_plugin"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bevy",
  "log",
@@ -1244,7 +1244,7 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "sender_plugin"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bevy",
  "log",
@@ -1462,7 +1462,7 @@ checksum = "bc7d623258602320d5c55d1bc22793b57daff0ec7efc270ea7d55ce1d5f5471c"
 
 [[package]]
 name = "udp_client"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "log",
  "tokio",
@@ -1851,7 +1851,7 @@ checksum = "f17a85883d4e6d00e8a97c586de764dabcc06133f7f1d55dce5cdc070ad7fe59"
 
 [[package]]
 name = "ws_plugin"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bevy",
  "log",
